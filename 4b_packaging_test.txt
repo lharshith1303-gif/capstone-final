@@ -1,0 +1,13 @@
+Testing EmotionDetection package import...
+==================================================
+✓ Successfully imported emotion_detector from EmotionDetection package
+
+Testing with: 'I hate working long hours.'
+
+Result:
+{'anger': 0.64999825, 'disgust': 0.03349073, 'fear': 0.05567236, 'joy': 0.008661813, 'sadness': 0.19678932, 'dominant_emotion': 'anger'}
+
+Dominant emotion: anger
+
+==================================================
+Package validation successful!
