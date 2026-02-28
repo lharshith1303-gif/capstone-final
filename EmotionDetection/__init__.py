@@ -1,1 +1,1 @@
-from . import sentiment_analysis
+from .emotion_detection import emotion_detector
