@@ -42,16 +42,29 @@ def emotion_detector(text_to_analyse):
     # assign the selected values ​​later.
     formatted_out = dict()
 
-    # Search the JSON response, assigning only the key 
-    # "emotion" and its score to the new dictionary.
-    for (formatted, 
-        score) in formatted['emotionPredictions'][0]['emotion'].items():
+    if response.status_code == 200:  
 
-        formatted_out.update({f"{formatted}" : f"{score}"})
+        # Search the JSON response, assigning only the key 
+        # "emotion" and its score to the new dictionary.
+        for (formatted, 
+            score) in formatted['emotionPredictions'][0]['emotion'].items():
 
-    # Identifies the key with the highest score and adds 
-    # the new key with the highest-scoring emotion as its value.
-    formatted_out.update({"dominant_emotion" :
-        f"{max(formatted_out, key = formatted_out.get)}"})
+            formatted_out.update({f"{formatted}" : f"{score}"})
+        
+        # Identifies the key with the highest score and adds 
+        # the new key with the highest-scoring emotion as its value.
+        formatted_out.update({"dominant_emotion" :
+            f"{max(formatted_out, key = formatted_out.get)}"})
+    
+    elif response.status_code == 400:
+    
+        formatted_out = {
+        'anger': None, 
+        'disgust': None, 
+        'fear': None, 
+        'joy': None, 
+        'sadness': None,
+        'dominant_emotion': None 
+        }
     
     return formatted_out
